@@ -27,26 +27,12 @@
 </head>
 
 <body>
+    <!-- Sharepoint Auth From -->
     <form runat="server">
         <SharePoint:FormDigest ID="FormDigest1" runat="server"></SharePoint:FormDigest>
     </form>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#!">
-                    <img alt="Brand" width="20" height="20" src="../Images/AppIcon.png">
-                </a>
-                <a class="navbar-brand" style="color: #ffffff;text-decoration: initial;" href="#!">
-                    Quick Notes
-                </a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            </div>
-        </div>
-    </nav>
-
+    <!-- Grid -->
     <div class="grid">
         <div class="grid-sizer"></div>
         <div class="gutter-sizer"></div>
@@ -60,8 +46,8 @@
             <div class="row">
                 <div class="span3"></div>
                 <div class="span6">
-                    Quick Notes © built by
-                    <a class="scriptogram-link" href="https://collaboration.swisscom.com/swisscomperson.aspx?accountname=CORPROOT\TGDVOJO7">Jonas Voland</a>
+                    Quick Notes is an open source project. Find it on 
+                    <a target="_blank" class="scriptogram-link" href="https://github.com/Wenish/Sharepoint-Notes-App">GitHub</a>
                     <p>Enjoy it. :)</p>
                 </div>
                 <div class="span3"></div>

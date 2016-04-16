@@ -1,5 +1,6 @@
 body {
     background: #e9eaed;
+    font-family: TheSaB3,'Trebuchet MS',Arial,Helvetica,sans-serif;
 }
 
 .item {
@@ -154,11 +155,12 @@ textarea {
 
 .grid{
     padding-left:0;
-    padding-right:0
+    padding-right:0;
+    top: 10px;
 }
 
 .grid-sizer { 
-    width: 20%
+    width: 20%;
 }
 
 .gutter-sizer { 

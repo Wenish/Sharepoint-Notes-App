@@ -160,7 +160,6 @@ function getCurrentUser() {
         },
 
         success: function (data) {
-            $('<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">' + data.d.Title + '</a></p>').appendTo("#bs-example-navbar-collapse-1");
             currentUserName = data.d.Title;
         },
         error: function (err) {

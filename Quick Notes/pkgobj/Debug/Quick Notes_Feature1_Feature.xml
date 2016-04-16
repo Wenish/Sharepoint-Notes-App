@@ -35,9 +35,6 @@
     <ElementFile Location="Images\AppIcon.png" />
     <ElementFile Location="Images\transparent-background.png" />
     <ElementFile Location="Images\addNoteIcon.png" />
-    <ElementManifest Location="ListForQuickNotesInstance\Elements.xml" />
-    <ElementManifest Location="ListForQuickNotes\Elements.xml" />
-    <ElementFile Location="ListForQuickNotes\Schema.xml" />
     <ElementManifest Location="Elements.xml" />
     <ElementFile Location="AppIcon.ico" />
     <ElementManifest Location="TasksInstance\Elements.xml" />
@@ -51,8 +48,6 @@
         <ElementManifest Location="Scripts\Elements.xml" />
         <ElementManifest Location="Content\Elements.xml" />
         <ElementManifest Location="Images\Elements.xml" />
-        <ElementManifest Location="ListForQuickNotesInstance\Elements.xml" />
-        <ElementManifest Location="ListForQuickNotes\Elements.xml" />
         <ElementManifest Location="Elements.xml" />
         <ElementManifest Location="TasksInstance\Elements.xml" />
         <ElementManifest Location="Tasks\Elements.xml" />

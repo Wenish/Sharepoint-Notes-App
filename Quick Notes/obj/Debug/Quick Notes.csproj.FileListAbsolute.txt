@@ -108,3 +108,14 @@ C:\Users\Jonas\Desktop\Quick Notes V10056\Quick Notes\bin\Debug\de\System.Net.Ht
 C:\Users\Jonas\Desktop\Quick Notes V10056\Quick Notes\obj\Debug\Quick Notes.csprojResolveAssemblyReference.cache
 C:\Users\Jonas\Desktop\Quick Notes V10056\Quick Notes\obj\Debug\Quick Notes.dll
 C:\Users\Jonas\Desktop\Quick Notes V10056\Quick Notes\obj\Debug\Quick Notes.pdb
+E:\GitHub\Sharepoint-Notes-App\Quick Notes\bin\Debug\Quick Notes.pdb
+E:\GitHub\Sharepoint-Notes-App\Quick Notes\bin\Debug\Microsoft.Activities.dll
+E:\GitHub\Sharepoint-Notes-App\Quick Notes\bin\Debug\Microsoft.SharePoint.DesignTime.Activities.dll
+E:\GitHub\Sharepoint-Notes-App\Quick Notes\bin\Debug\System.Net.Http.Formatting.dll
+E:\GitHub\Sharepoint-Notes-App\Quick Notes\bin\Debug\Newtonsoft.Json.dll
+E:\GitHub\Sharepoint-Notes-App\Quick Notes\bin\Debug\Microsoft.Activities.xml
+E:\GitHub\Sharepoint-Notes-App\Quick Notes\bin\Debug\System.Net.Http.Formatting.xml
+E:\GitHub\Sharepoint-Notes-App\Quick Notes\bin\Debug\de\System.Net.Http.Formatting.resources.dll
+E:\GitHub\Sharepoint-Notes-App\Quick Notes\obj\Debug\Quick Notes.csprojResolveAssemblyReference.cache
+E:\GitHub\Sharepoint-Notes-App\Quick Notes\obj\Debug\Quick Notes.dll
+E:\GitHub\Sharepoint-Notes-App\Quick Notes\obj\Debug\Quick Notes.pdb
