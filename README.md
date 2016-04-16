@@ -1,5 +1,7 @@
 # Sharepoint-Notes-App
 
-This is app allows you to create Notes/Task.
+This is a Sharepoint Hosted App so it runs on Sharepoint Online/On Premise.
 
-It is a Sharepoint Hosted App so it runs on Sharepoint Online/On Premise.
+It allows you to create Notes/Task.
+
+
