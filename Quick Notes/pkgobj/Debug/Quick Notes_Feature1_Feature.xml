@@ -12,7 +12,7 @@
     <ElementFile Location="Scripts\bootstrap.js" />
     <ElementFile Location="Scripts\jquery-2.1.4.min.js" />
     <ElementFile Location="Scripts\makeboxes.js" />
-    <ElementFile Location="Scripts\whereTheMagicHappens.js" />
+    <ElementFile Location="Scripts\app.js" />
     <ElementFile Location="Scripts\image-picker.js" />
     <ElementFile Location="Scripts\materialize.min.js" />
     <ElementFile Location="Scripts\jgestures.min.js" />
@@ -35,6 +35,7 @@
     <ElementFile Location="Images\AppIcon.png" />
     <ElementFile Location="Images\transparent-background.png" />
     <ElementFile Location="Images\addNoteIcon.png" />
+    <ElementFile Location="Images\AppIcon500px.png" />
     <ElementManifest Location="Elements.xml" />
     <ElementFile Location="AppIcon.ico" />
     <ElementManifest Location="TasksInstance\Elements.xml" />

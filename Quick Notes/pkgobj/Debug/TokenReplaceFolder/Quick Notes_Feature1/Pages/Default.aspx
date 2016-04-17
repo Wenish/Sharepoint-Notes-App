@@ -14,8 +14,7 @@
     <meta name=apple-mobile-web-app-capable content=yes />
     <meta name=apple-mobile-web-app-status-bar-style content=black />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="shortcut icon" href="../Images/AppIcon.png" type="image/x-icon" />
-
+    <link rel="shortcut icon" type="image/x-icon" href="../Images/AppIcon.png">
     <!-- CSS -->
     <link href="../Content/css/bootstrap.css" rel="stylesheet" />
     <link href="../Content/css/bootstrap-responsive.css" rel="stylesheet" />
@@ -95,7 +94,7 @@
     <script type="text/javascript" src="../Scripts/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../Scripts/jquery.mobile.custom.min.js"></script>
     <script type="text/javascript" src="../Scripts/masonry.min.js"></script>
-    <script type="text/javascript" src="../Scripts/whereTheMagicHappens.js"></script>
+    <script type="text/javascript" src="../Scripts/app.js"></script>
     <script type="text/javascript" src="../Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="../Scripts/autosize.min.js"></script>
     <script type="text/javascript" src="../Scripts/image-picker.js"></script>

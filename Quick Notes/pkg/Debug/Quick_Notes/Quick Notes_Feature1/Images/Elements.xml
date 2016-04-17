@@ -4,5 +4,6 @@
     <File Path="Images\AppIcon.png" Url="Images/AppIcon.png" ReplaceContent="TRUE" />
     <File Path="Images\transparent-background.png" Url="Images/transparent-background.png" ReplaceContent="TRUE" />
     <File Path="Images\addNoteIcon.png" Url="Images/addNoteIcon.png" ReplaceContent="TRUE" />
+    <File Path="Images\AppIcon500px.png" Url="Images/AppIcon500px.png" ReplaceContent="TRUE" />
   </Module>
 </Elements>

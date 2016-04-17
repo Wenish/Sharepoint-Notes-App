@@ -36,6 +36,10 @@ body {
     background: rgba(255,255,255,0.5);
 }
 
+.itemBotButton.editNoteSave, .itemBotButton.editNoteQuit {
+    width: 50%
+}
+
 .form-control {
     font-size: larger;
     color: black;
@@ -57,6 +61,10 @@ body {
 
 .editItem {
     display: none;
+}
+
+.noteText {
+    margin: 0;
 }
 
 .noteText:hover {

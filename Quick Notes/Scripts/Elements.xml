@@ -9,7 +9,7 @@
     <File Path="Scripts\bootstrap.js" Url="Scripts/bootstrap.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery-2.1.4.min.js" Url="Scripts/jquery-2.1.4.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\makeboxes.js" Url="Scripts/makeboxes.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\whereTheMagicHappens.js" Url="Scripts/whereTheMagicHappens.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\app.js" Url="Scripts/app.js" ReplaceContent="TRUE" />
     <File Path="Scripts\image-picker.js" Url="Scripts/image-picker.js" ReplaceContent="TRUE" />
     <File Path="Scripts\materialize.min.js" Url="Scripts/materialize.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jgestures.min.js" Url="Scripts/jgestures.min.js" ReplaceContent="TRUE" />

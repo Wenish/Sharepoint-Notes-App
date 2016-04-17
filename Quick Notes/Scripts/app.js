@@ -71,6 +71,7 @@ function clickNoteButtons() {
         closeEditModus();
         $("p[data-id='" + idNoteToHandle + "']").hide();
         $("h4[data-id='" + idNoteToHandle + "']").hide();
+        $(".boxeToolbar[data-id='" + idNoteToHandle + "']").hide();
         $("div.editItem[data-id='" + idNoteToHandle + "']").show();
         autosize.update($('textarea'));
         msnry.layout();
@@ -119,6 +120,7 @@ function closeEditModus() {
     $("div.editItem").hide();
     $("h4").show();
     $("p").show();
+    $(".boxeToolbar").show();
     msnry.layout();
 }
 
@@ -141,10 +143,7 @@ function updateNoteTextStart(id) {
     }
 
     $("p[data-id='" + id + "']").html(text);
-    $("div.editItem[data-id='" + id + "']").hide();
-    $("h4[data-id='" + id + "']").show();
-    $("p[data-id='" + id + "']").show();
-    msnry.layout();
+    closeEditModus();
     updateNoteText(id, textclean);
     console.log("Save");
 }
@@ -253,10 +252,10 @@ function appendItem(boxeId, boxeText, boxeNoteBackgroundColor, boxeModified, box
 
     var createdByLine = '<p style="text-align: right;font-size: small;white-space: pre;overflow: hidden;display: -webkit-box;margin-bottom: auto;-webkit-line-clamp: 1; -webkit-box-orient: vertical;">Created by: ' + boxeAuthorTitle + '</p>';
     var lastModifiedLine = "<p style='text-align: right;font-size: small;margin-bottom: auto;'>Modified: " + modified_date + "</p>";
-    var editButtons = '<input data-id="' + boxeId + '" class="btn btn-default editNoteSave" type="button" value="Save"> <input data-id="' + boxeId + '" class="btn btn-default editNoteQuit" type="button" value="Quit">'
-    var noteTextArea = '<div data-id="' + boxeId + '" class="editItem"><textarea data-id="' + boxeId + '" class="form-control" rows="1">' + boxeText + '</textarea><br />' + editButtons + '</div>'
-    var itemButtons = '<div class="itemBot"><div data-id="' + boxeId + '" class="itemBotButton"><span class="icon-note glyphicon glyphicon-user" style="font-size: xx-large;"></span></div><div  data-id="' + boxeId + '" class="itemBotButton"><span class="icon-note glyphicon glyphicon-calendar" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionColor"><span class="icon-note glyphicon glyphicon-tint" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionRemove"><span class="icon-note glyphicon glyphicon-remove" style="font-size: xx-large;"></span></div></div>'
-    var boxe = $("<div data-id='" + boxeId + "' class='grid-item item' style='background-color: " + boxeNoteBackgroundColor + ";'><div class='itemTop'><h4 data-id='" + boxeId + "' class='noteh4'></h4><p data-id='" + boxeId + "' class='noteText'>" + text + "</p>" + noteTextArea + createdByLine + lastModifiedLine + "</div>" + itemButtons + "</div>");
+    var noteTextArea = '<div data-id="' + boxeId + '" class="editItem"><textarea data-id="' + boxeId + '" class="form-control" rows="1">' + boxeText + '</textarea></div>'
+    var itemButtons = '<div data-id="' + boxeId + '" class="itemBot boxeToolbar"><div data-id="' + boxeId + '" class="itemBotButton"><span class="icon-note glyphicon glyphicon-user" style="font-size: xx-large;"></span></div><div  data-id="' + boxeId + '" class="itemBotButton"><span class="icon-note glyphicon glyphicon-calendar" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionColor"><span class="icon-note glyphicon glyphicon-tint" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionRemove"><span class="icon-note glyphicon glyphicon-remove" style="font-size: xx-large;"></span></div></div>'
+    var editButtonBar = '<div data-id="' + boxeId + '" class="itemBot editItem"><div data-id="' + boxeId + '" class="itemBotButton editNoteSave"><span class="icon-note glyphicon glyphicon-ok" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton editNoteQuit"><span class="icon-note glyphicon glyphicon-remove" style="font-size: xx-large;"></span></div></div>'
+    var boxe = $("<div data-id='" + boxeId + "' class='grid-item item' style='background-color: " + boxeNoteBackgroundColor + ";'><div class='itemTop'><h4 data-id='" + boxeId + "' class='noteh4'></h4><p data-id='" + boxeId + "' class='noteText'>" + text + "</p>" + noteTextArea + createdByLine + lastModifiedLine + "</div>" + itemButtons + editButtonBar + "</div>");
 
     // append items to grid
     $(".grid").prepend(boxe);

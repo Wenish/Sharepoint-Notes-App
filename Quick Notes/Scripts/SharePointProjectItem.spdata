@@ -10,7 +10,7 @@
     <ProjectItemFile Source="bootstrap.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="jquery-2.1.4.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="makeboxes.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="whereTheMagicHappens.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="app.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="image-picker.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="materialize.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="jgestures.min.js" Target="Scripts\" Type="ElementFile" />
