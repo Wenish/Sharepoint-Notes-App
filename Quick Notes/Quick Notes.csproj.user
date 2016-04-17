@@ -17,8 +17,8 @@
       <FlavorProperties GUID="{C1CDDADD-2546-481F-9697-4EA41081F2FC}">
         <ProjectStore>
           <IsWorkflowDebuggingEnabled>false</IsWorkflowDebuggingEnabled>
-          <AppInstancePackageModifiedTime>2016-04-17T00:00:07.0292417Z</AppInstancePackageModifiedTime>
-          <AppInstanceId>ab5e4abd-e40a-40de-850c-363285e70bb8</AppInstanceId>
+          <AppInstancePackageModifiedTime>2016-04-17T00:02:27.5102767Z</AppInstancePackageModifiedTime>
+          <AppInstanceId>4b3d9726-ba22-4d3b-83a4-339093876df3</AppInstanceId>
         </ProjectStore>
       </FlavorProperties>
     </VisualStudio>
