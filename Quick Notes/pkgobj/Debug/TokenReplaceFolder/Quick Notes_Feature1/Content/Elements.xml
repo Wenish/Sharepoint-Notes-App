@@ -12,6 +12,5 @@
     <File Path="Content\css\image-picker.css" Url="Content/css/image-picker.css" ReplaceContent="TRUE" />
     <File Path="Content\fonts\thesans-extralightitalic-webfont.woff" Url="Content/fonts/thesans-extralightitalic-webfont.woff" ReplaceContent="TRUE" />
     <File Path="Content\fonts\thesans-semilight-webfont.woff" Url="Content/fonts/thesans-semilight-webfont.woff" ReplaceContent="TRUE" />
-    <File Path="Content\css\materialize.css" Url="Content/css/materialize.css" ReplaceContent="TRUE" />
   </Module>
 </Elements>

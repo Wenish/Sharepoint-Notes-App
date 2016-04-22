@@ -13,6 +13,5 @@
     <ProjectItemFile Source="css\image-picker.css" Target="Content\css\" Type="ElementFile" />
     <ProjectItemFile Source="fonts\thesans-extralightitalic-webfont.woff" Target="Content\fonts\" Type="ElementFile" />
     <ProjectItemFile Source="fonts\thesans-semilight-webfont.woff" Target="Content\fonts\" Type="ElementFile" />
-    <ProjectItemFile Source="css\materialize.css" Target="Content\css\" Type="ElementFile" />
   </Files>
 </ProjectItem>

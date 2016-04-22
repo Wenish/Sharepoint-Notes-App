@@ -24,6 +24,7 @@ $(document).ready(function () {
 
     startColorpickers();
 
+    FastClick.attach(document.body);
 });
 
 function startColorpickers() {
@@ -61,6 +62,12 @@ function clickNoteButtons() {
     $(".actionColor").bind('click', function () {
         var idNoteToHandle = $(this).attr("data-id");
         readNoteToUpdate(idNoteToHandle);
+    });
+
+    $(".actionPeoplePicker").unbind("click");
+    $(".actionPeoplePicker").bind('click', function () {
+        var idNoteToHandle = $(this).attr("data-id");
+        console.log('hallo')
     });
 
     $(".noteText").unbind("click");
@@ -253,7 +260,7 @@ function appendItem(boxeId, boxeText, boxeNoteBackgroundColor, boxeModified, box
     var createdByLine = '<p style="text-align: right;font-size: small;white-space: pre;overflow: hidden;display: -webkit-box;margin-bottom: auto;-webkit-line-clamp: 1; -webkit-box-orient: vertical;">Created by: ' + boxeAuthorTitle + '</p>';
     var lastModifiedLine = "<p style='text-align: right;font-size: small;margin-bottom: auto;'>Modified: " + modified_date + "</p>";
     var noteTextArea = '<div data-id="' + boxeId + '" class="editItem"><textarea data-id="' + boxeId + '" class="form-control" rows="1">' + boxeText + '</textarea></div>'
-    var itemButtons = '<div data-id="' + boxeId + '" class="itemBot boxeToolbar"><div data-id="' + boxeId + '" class="itemBotButton"><span class="icon-note glyphicon glyphicon-user" style="font-size: xx-large;"></span></div><div  data-id="' + boxeId + '" class="itemBotButton"><span class="icon-note glyphicon glyphicon-calendar" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionColor"><span class="icon-note glyphicon glyphicon-tint" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionRemove"><span class="icon-note glyphicon glyphicon-remove" style="font-size: xx-large;"></span></div></div>'
+    var itemButtons = '<div data-id="' + boxeId + '" class="itemBot boxeToolbar"><div data-id="' + boxeId + '" class="itemBotButton actionPeoplePicker"><span class="icon-note glyphicon glyphicon-user" style="font-size: xx-large;"></span></div><div  data-id="' + boxeId + '" class="itemBotButton"><span class="icon-note glyphicon glyphicon-calendar" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionColor"><span class="icon-note glyphicon glyphicon-tint" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionRemove"><span class="icon-note glyphicon glyphicon-remove" style="font-size: xx-large;"></span></div></div>'
     var editButtonBar = '<div data-id="' + boxeId + '" class="itemBot editItem"><div data-id="' + boxeId + '" class="itemBotButton editNoteSave"><span class="icon-note glyphicon glyphicon-ok" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton editNoteQuit"><span class="icon-note glyphicon glyphicon-remove" style="font-size: xx-large;"></span></div></div>'
     var boxe = $("<div data-id='" + boxeId + "' class='grid-item item' style='background-color: " + boxeNoteBackgroundColor + ";'><div class='itemTop'><h4 data-id='" + boxeId + "' class='noteh4'></h4><p data-id='" + boxeId + "' class='noteText'>" + text + "</p>" + noteTextArea + createdByLine + lastModifiedLine + "</div>" + itemButtons + editButtonBar + "</div>");
 
@@ -375,16 +382,4 @@ function deleteNote(id) {
             console.log(JSON.stringify(err));
         }
     });
-}
-
-function CheckTextAreaHeight(tarea) {
-    var nCounter = 1;
-    var sNeedle = "\n";
-
-    for (var i = 0; i < tarea.value.length; i++) {
-        if (sNeedle == tarea.value.substr(i, sNeedle.length)) {
-            nCounter++;
-        }
-    }
-    tarea.rows = nCounter;
 }

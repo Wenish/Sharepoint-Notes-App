@@ -61,7 +61,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="updateNoteModalLabel">Change Note</h4>
+                    <h4 class="modal-title" id="updateNoteModalLabel">Color Note</h4>
                 </div>
                 <div class="modal-body">
                     <select class="image-picker show-html" id="colorpickerUpdateNote">
@@ -82,6 +82,25 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal People Picker -->
+    <div class="modal fade" id="peoplePickerNoteModal" tabindex="-1" role="dialog" aria-labelledby="updateNoteModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="peoplePickerModalLabel">Assign Note</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="nameOfPicker"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input data-id="" id="btnUpdatePeoplePickerNote" class="btn btn-primary" type="button" value="Save Changes">
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div id="fixedbutton"><div id="fixedbuttonIcon">+</div></div>
 
@@ -98,5 +117,7 @@
     <script type="text/javascript" src="../Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="../Scripts/autosize.min.js"></script>
     <script type="text/javascript" src="../Scripts/image-picker.js"></script>
+    <script type="text/javascript" src="../Scripts/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="../Scripts/fastclick.js"></script>
 </body>
 </html>

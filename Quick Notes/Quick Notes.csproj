@@ -88,7 +88,6 @@
     <Content Include="Content\css\bootstrap-responsive.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\image-picker.css" />
-    <Content Include="Content\css\materialize.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Elements.xml" />
@@ -100,6 +99,7 @@
     <Content Include="Lists\Tasks\TasksInstance\Elements.xml" />
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
+    <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\masonry.min.js" />
     <None Include="SharePointProjectItem.spdata">
       <SharePointProjectItemId>{251f890d-aa44-4f14-9e53-123638d660f7}</SharePointProjectItemId>
@@ -114,15 +114,14 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\image-picker.js" />
-    <Content Include="Scripts\jgestures.min.js" />
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery.mobile.custom.min.js" />
     <Content Include="Scripts\makeboxes.js" />
-    <Content Include="Scripts\materialize.min.js" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>

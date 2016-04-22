@@ -14,10 +14,10 @@
     <ElementFile Location="Scripts\makeboxes.js" />
     <ElementFile Location="Scripts\app.js" />
     <ElementFile Location="Scripts\image-picker.js" />
-    <ElementFile Location="Scripts\materialize.min.js" />
-    <ElementFile Location="Scripts\jgestures.min.js" />
     <ElementFile Location="Scripts\jquery.mobile.custom.min.js" />
     <ElementFile Location="Scripts\masonry.min.js" />
+    <ElementFile Location="Scripts\moment-with-locales.min.js" />
+    <ElementFile Location="Scripts\fastclick.js" />
     <ElementManifest Location="Content\Elements.xml" />
     <ElementFile Location="Content\css\bootstrap.css" />
     <ElementFile Location="Content\css\bootstrap-responsive.css" />
@@ -30,7 +30,6 @@
     <ElementFile Location="Content\css\image-picker.css" />
     <ElementFile Location="Content\fonts\thesans-extralightitalic-webfont.woff" />
     <ElementFile Location="Content\fonts\thesans-semilight-webfont.woff" />
-    <ElementFile Location="Content\css\materialize.css" />
     <ElementManifest Location="Images\Elements.xml" />
     <ElementFile Location="Images\AppIcon.png" />
     <ElementFile Location="Images\transparent-background.png" />

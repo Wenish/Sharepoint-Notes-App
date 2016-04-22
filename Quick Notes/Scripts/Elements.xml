@@ -11,9 +11,9 @@
     <File Path="Scripts\makeboxes.js" Url="Scripts/makeboxes.js" ReplaceContent="TRUE" />
     <File Path="Scripts\app.js" Url="Scripts/app.js" ReplaceContent="TRUE" />
     <File Path="Scripts\image-picker.js" Url="Scripts/image-picker.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\materialize.min.js" Url="Scripts/materialize.min.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\jgestures.min.js" Url="Scripts/jgestures.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery.mobile.custom.min.js" Url="Scripts/jquery.mobile.custom.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\masonry.min.js" Url="Scripts/masonry.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\moment-with-locales.min.js" Url="Scripts/moment-with-locales.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\fastclick.js" Url="Scripts/fastclick.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>
