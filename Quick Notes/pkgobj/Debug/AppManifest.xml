@@ -3,7 +3,7 @@
 <App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
      Name="QuickNotes"
      ProductID="{7ca68c24-084e-4584-9af7-cd15606d888f}"
-     Version="1.0.0.57"
+     Version="1.0.0.58"
      SharePointMinVersion="15.0.0.0"
 >
   <Properties>

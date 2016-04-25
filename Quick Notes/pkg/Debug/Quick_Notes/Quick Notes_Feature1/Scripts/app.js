@@ -3,6 +3,10 @@ var t = true;
 var f = false;
 var regExLink = /(\b(https?|ftp|file):\/\/([-A-Z0-9+&@#%?=~_|!:,.;]*)([-A-Z0-9+&@#%?\/=~_|!:,.;]*)[-A-Z0-9+&@#\/%=~_|])/ig;
 var taskListName = 'Tasks'
+var ppUserIds = [];
+var ppDivs = ["nameOfPicker"];
+var uId = ppUserIds[0];
+var loadMethod = false;
 
 $(document).ready(function () {
     console.log("Document Ready: The magic can start!")
@@ -25,6 +29,8 @@ $(document).ready(function () {
     startColorpickers();
 
     FastClick.attach(document.body);
+
+    InitializePeoplePickers();
 });
 
 function startColorpickers() {
@@ -67,7 +73,7 @@ function clickNoteButtons() {
     $(".actionPeoplePicker").unbind("click");
     $(".actionPeoplePicker").bind('click', function () {
         var idNoteToHandle = $(this).attr("data-id");
-        console.log('hallo')
+        $('#peoplePickerNoteModal').modal('show');
     });
 
     $(".noteText").unbind("click");
@@ -377,6 +383,98 @@ function deleteNote(id) {
             "X-Http-Method": "PATCH"
         },
         success: function (data) {
+        },
+        error: function (err) {
+            console.log(JSON.stringify(err));
+        }
+    });
+}
+
+function InitializePeoplePickers() {
+    for (var i = 0; i < ppDivs.length; i++) {
+        var ppDivActualElement = ppDivs[i];
+        // Create a schema to store picker properties, and set the properties.
+        var schema = {};
+        schema['PrincipalAccountType'] = 'User,SecGroup';
+        schema['SearchPrincipalSource'] = 15;
+        schema['ResolvePrincipalSource'] = 15;
+        schema['AllowMultipleValues'] = false;
+        schema['MaximumEntitySuggestions'] = 10;
+        schema['Width'] = '100%';
+        // Render and initialize the picker.
+        // Pass the ID of the DOM element that contains the picker, an array of initial
+        // PickerEntity objects to set the picker value, and a schema that defines
+        // picker properties.
+        SPClientPeoplePicker_InitStandaloneControlWrapper(ppDivActualElement, null, schema);
+    }
+}
+
+function getUserInfo(method) {
+
+    var peoplepickerArray = []
+    //Push your peoplepicker div in an array
+    peoplepickerArray.push(this.SPClientPeoplePicker.SPClientPeoplePickerDict.nameOfPicker_TopSpan);
+
+
+    for (var i = 0; i < peoplepickerArray.length; i++) {
+        var keys = peoplepickerArray[i].GetAllUserKeys();
+        ensureUser(keys, i);
+        var userIdInterval = setInterval(function () { trySaveUserId() }, 100);
+        function trySaveUserId() {
+            if (ppUserIds.length == $('classOfPicker').length) {
+                clearInterval(userIdInterval);
+                if (!loadMethod) {
+                    loadMethod = true;
+                    method();
+                }
+                else {
+                    return;
+                }
+
+            }
+        }
+    }
+}
+
+function ensureUser(logonName, index) {
+    if (logonName == "") {
+        return;
+    } else {
+        var encKey = logonName.replace("\\", "\\\\");
+        $.ajax({
+            url: _spPageContextInfo.webServerRelativeUrl + "/_api/web/ensureuser",
+            type: "POST",
+            contentType: "application/json;odata=verbose",
+            data: "{ 'logonName': '" + encKey + "' }",
+            headers: {
+                "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+                "accept": "application/json;odata=verbose"
+            },
+            success: function () {
+                getUserIds(logonName, index);
+            },
+            error: function (err) {
+                console.log(JSON.stringify(err));
+            }
+        });
+    }
+}
+
+function getUserIds(keys, index) {
+    var loginNameResolve = encodeURIComponent(keys);
+    $.ajax({
+        url: _spPageContextInfo.webServerRelativeUrl +
+            "/_api/web/siteusers?$filter=LoginName eq '" + loginNameResolve + "'",
+        type: "GET",
+        headers: {
+            "accept": "application/json;odata=verbose",
+        },
+        success: function (data) {
+            var results = data.d.results;
+            if (results.length != 0) {
+                ppUserIds[index] = results[0].Id;
+            }
+            console.log(data)
         },
         error: function (err) {
             console.log(JSON.stringify(err));

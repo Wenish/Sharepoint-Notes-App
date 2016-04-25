@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Description="SharePoint-App-Feature" Id="98b8622d-5268-4f9e-b440-22f5aed50ea1" Scope="Web" Title="Quick Notes Feature1" Version="1.0.0.57">
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Description="SharePoint-App-Feature" Id="98b8622d-5268-4f9e-b440-22f5aed50ea1" Scope="Web" Title="Quick Notes Feature1" Version="1.0.0.58">
   <ElementManifests>
     <ElementManifest Location="Pages\Elements.xml" />
     <ElementFile Location="Pages\Default.aspx" />
@@ -30,6 +30,7 @@
     <ElementFile Location="Content\css\image-picker.css" />
     <ElementFile Location="Content\fonts\thesans-extralightitalic-webfont.woff" />
     <ElementFile Location="Content\fonts\thesans-semilight-webfont.woff" />
+    <ElementFile Location="Content\css\SPCoreStyles.css" />
     <ElementManifest Location="Images\Elements.xml" />
     <ElementFile Location="Images\AppIcon.png" />
     <ElementFile Location="Images\transparent-background.png" />

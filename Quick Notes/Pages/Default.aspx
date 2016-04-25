@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="../Images/AppIcon.png">
     <!-- CSS -->
+    <link href="../Content/css/SPCoreStyles.css" rel="stylesheet" />
     <link href="../Content/css/bootstrap.css" rel="stylesheet" />
     <link href="../Content/css/bootstrap-responsive.css" rel="stylesheet" />
     <link href="../Content/css/style.css" rel="stylesheet" />
@@ -47,7 +48,6 @@
                 <div class="span6">
                     Quick Notes is an open source project. Find it on 
                     <a target="_blank" class="scriptogram-link" href="https://github.com/Wenish/Sharepoint-Notes-App">GitHub</a>
-                    <p>Enjoy it. :)</p>
                 </div>
                 <div class="span3"></div>
             </div>
@@ -105,11 +105,16 @@
     <div id="fixedbutton"><div id="fixedbuttonIcon">+</div></div>
 
         <!-- JavaScript -->
+    <SharePoint:ScriptLink name="clienttemplates.js" runat="server" LoadAfterUI="true" Localizable="false" />
+    <SharePoint:ScriptLink name="clientforms.js" runat="server" LoadAfterUI="true" Localizable="false" />
+    <SharePoint:ScriptLink name="clientpeoplepicker.js" runat="server" LoadAfterUI="true" Localizable="false" />
+    <SharePoint:ScriptLink name="autofill.js" runat="server" LoadAfterUI="true" Localizable="false" />
     <script type="text/javascript" src="/_layouts/1033/init.js"></script>
     <script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.core.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.js"></script>
+
     <script type="text/javascript" src="../Scripts/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../Scripts/jquery.mobile.custom.min.js"></script>
     <script type="text/javascript" src="../Scripts/masonry.min.js"></script>

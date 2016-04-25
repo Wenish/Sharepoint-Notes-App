@@ -88,6 +88,7 @@
     <Content Include="Content\css\bootstrap-responsive.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\image-picker.css" />
+    <Content Include="Content\css\SPCoreStyles.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Elements.xml" />
