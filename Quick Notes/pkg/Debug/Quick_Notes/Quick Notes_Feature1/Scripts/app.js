@@ -7,6 +7,8 @@ var ppUserIds = [];
 var ppDivs = ["nameOfPicker"];
 var uId = ppUserIds[0];
 var loadMethod = false;
+var noteIdForPeoplePicker;
+var noteIdForDatePicker;
 
 $(document).ready(function () {
     console.log("Document Ready: The magic can start!")
@@ -75,12 +77,14 @@ function clickNoteButtons() {
     $(".actionPeoplePicker").unbind("click");
     $(".actionPeoplePicker").bind('click', function () {
         var idNoteToHandle = $(this).attr("data-id");
+        $('#btnUpdatePeoplePickerNote').attr("data-id", idNoteToHandle);
         $('#peoplePickerNoteModal').modal('show');
     });
 
     $(".actionDatePicker").unbind("click");
     $(".actionDatePicker").bind('click', function () {
         var idNoteToHandle = $(this).attr("data-id");
+        $('#btnUpdateDatePickerNote').attr("data-id", idNoteToHandle);
         $('#datePickerNoteModal').modal('show');
     });
 
@@ -90,13 +94,29 @@ function clickNoteButtons() {
 
         var idNoteToHandle = $(this).attr("data-id");
         closeEditModus();
-        $("p[data-id='" + idNoteToHandle + "']").hide();
+        $("p.noteText[data-id='" + idNoteToHandle + "']").hide();
         $("h4[data-id='" + idNoteToHandle + "']").hide();
         $(".boxeToolbar[data-id='" + idNoteToHandle + "']").hide();
         $("div.editItem[data-id='" + idNoteToHandle + "']").show();
         autosize.update($('textarea'));
         msnry.layout();
     });
+
+    $("#btnUpdatePeoplePickerNote").unbind("click");
+    $("#btnUpdatePeoplePickerNote").bind('click', function () {
+        noteIdForPeoplePicker = $(this).attr("data-id");
+        getUserInfo(callbackGetUserInfo);
+        $('#peoplePickerNoteModal').modal('hide');
+    });
+
+    $("#btnUpdateDatePickerNote").unbind("click");
+    $("#btnUpdateDatePickerNote").bind('click', function () {
+        noteIdForDatePicker = $(this).attr("data-id");
+        updateNoteDate();
+        $('#datePickerNoteModal').modal('hide');
+    });
+
+    
 
     $(".editNoteSave").unbind("click");
     $(".editNoteSave").bind('click', function () {
@@ -163,7 +183,7 @@ function updateNoteTextStart(id) {
         text = text.replace(regExLink, "<a href='$1' target='_blank'>$1</a>");
     }
 
-    $("p[data-id='" + id + "']").html(text);
+    $("p.noteText[data-id='" + id + "']").html(text);
     closeEditModus();
     updateNoteText(id, textclean);
     console.log("Save");
@@ -211,7 +231,7 @@ function createNote() {
         success: function (data) {
             console.log(data);
 
-            appendItem(data.d.Id, data.d.Body, data.d.NoteBackgroundColor, data.d.Modified, currentUserName);
+            appendItem(data.d.Id, data.d.Body, data.d.NoteBackgroundColor, data.d.Modified, currentUserName , null, null);
 
             msnry.reloadItems();
             msnry.layout();
@@ -227,7 +247,7 @@ function createNote() {
 function readNotes() {
     $.ajax({
         url: _spPageContextInfo.webServerRelativeUrl +
-             "/_api/web/lists/getbytitle('" + taskListName + "')/items?$select=Id,Body,NoteBackgroundColor,Modified,Author/Name,Author/Title&$filter=Archiviert eq 0 &$orderby=Created asc&$expand=Author/Id&$top=5000",
+             "/_api/web/lists/getbytitle('" + taskListName + "')/items?$select=Id,Body,NoteBackgroundColor,Modified,DateText,Author/Name,Author/Title,AssignedTo/Title&$filter=Archiviert eq 0 &$orderby=Created asc&$expand=Author/Id,AssignedTo/Id&$top=5000",
         type: "GET",
         headers: {
             "accept": "application/json;odata=verbose",
@@ -236,9 +256,19 @@ function readNotes() {
         success: function (data) {
             var results = data.d.results;
             $(".item").remove();
+            console.log(data)
 
             for (var i = 0; i < results.length; i++) {
-                appendItem(results[i].Id, results[i].Body, results[i].NoteBackgroundColor, results[i].Modified, results[i].Author.Title);
+                var AssignedToUser = null
+                if (results[i].AssignedTo.results != undefined) {
+                    AssignedToUser = results[i].AssignedTo.results[0].Title;
+                }
+                var DateText = null
+                if (results[i].DateText != '') {
+                    DateText = results[i].DateText
+                }
+
+                appendItem(results[i].Id, results[i].Body, results[i].NoteBackgroundColor, results[i].Modified, results[i].Author.Title, AssignedToUser, DateText);
             }
             msnry.reloadItems();
             msnry.layout();
@@ -250,7 +280,7 @@ function readNotes() {
         }
     });
 }
-function appendItem(boxeId, boxeText, boxeNoteBackgroundColor, boxeModified, boxeAuthorTitle) {
+function appendItem(boxeId, boxeText, boxeNoteBackgroundColor, boxeModified, boxeAuthorTitle, assignedToUser, dueDateTime) {
     var y = new Date(boxeModified);
     var modified_year = y.getFullYear();
     var modified_month = ("0" + (y.getMonth() + 1)).slice(-2);
@@ -271,12 +301,21 @@ function appendItem(boxeId, boxeText, boxeNoteBackgroundColor, boxeModified, box
         text = text.replace(regExLink, "<a href='$1' target='_blank'>$1</a>");
     }
 
+    var assignedTo = ''
+    if (assignedToUser != null) {
+        assignedTo = '<p data-id="' + boxeId + '" class="assignedTo" style="text-align: right;font-size: small;white-space: pre;overflow: hidden;display: -webkit-box;margin-bottom: auto;-webkit-line-clamp: 1; -webkit-box-orient: vertical;">Assigned To: ' + assignedToUser + '</p>'
+    }
+    var dueDate = ''
+    if (dueDateTime != null) {
+        dueDate = '<p data-id="' + boxeId + '" class="dateText" style="text-align: right;font-size: small;margin-bottom: auto;">Due Date: ' + dueDateTime + '</p>'
+    }
+
     var createdByLine = '<p style="text-align: right;font-size: small;white-space: pre;overflow: hidden;display: -webkit-box;margin-bottom: auto;-webkit-line-clamp: 1; -webkit-box-orient: vertical;">Created by: ' + boxeAuthorTitle + '</p>';
     var lastModifiedLine = "<p style='text-align: right;font-size: small;margin-bottom: auto;'>Modified: " + modified_date + "</p>";
     var noteTextArea = '<div data-id="' + boxeId + '" class="editItem"><textarea data-id="' + boxeId + '" class="form-control" rows="1">' + boxeText + '</textarea></div>'
     var itemButtons = '<div data-id="' + boxeId + '" class="itemBot boxeToolbar"><div data-id="' + boxeId + '" class="itemBotButton actionPeoplePicker"><span class="icon-note glyphicon glyphicon-user" style="font-size: xx-large;"></span></div><div  data-id="' + boxeId + '" class="itemBotButton actionDatePicker"><span class="icon-note glyphicon glyphicon-calendar" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionColor"><span class="icon-note glyphicon glyphicon-tint" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionRemove"><span class="icon-note glyphicon glyphicon-remove" style="font-size: xx-large;"></span></div></div>'
     var editButtonBar = '<div data-id="' + boxeId + '" class="itemBot editItem"><div data-id="' + boxeId + '" class="itemBotButton editNoteSave"><span class="icon-note glyphicon glyphicon-ok" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton editNoteQuit"><span class="icon-note glyphicon glyphicon-remove" style="font-size: xx-large;"></span></div></div>'
-    var boxe = $("<div data-id='" + boxeId + "' class='grid-item item' style='background-color: " + boxeNoteBackgroundColor + ";'><div class='itemTop'><h4 data-id='" + boxeId + "' class='noteh4'></h4><p data-id='" + boxeId + "' class='noteText'>" + text + "</p>" + noteTextArea + createdByLine + lastModifiedLine + "</div>" + itemButtons + editButtonBar + "</div>");
+    var boxe = $("<div data-id='" + boxeId + "' class='grid-item item' style='background-color: " + boxeNoteBackgroundColor + ";'><div data-id='" + boxeId + "' class='itemTop'><h4 data-id='" + boxeId + "' class='noteh4'></h4><p data-id='" + boxeId + "' class='noteText'>" + text + "</p>" + noteTextArea + createdByLine + lastModifiedLine + assignedTo + dueDate + "</div>" + itemButtons + editButtonBar + "</div>");
 
     // append items to grid
     $(".grid").prepend(boxe);
@@ -371,6 +410,37 @@ function updateNoteColor(id) {
     });
 }
 
+function updateNoteDate() {
+    $(".dateText[data-id='" + noteIdForDatePicker + "']").remove();
+    $(".itemTop[data-id='" + noteIdForDatePicker + "']").append('<p data-id="' + noteIdForDatePicker + '" class="dateText" style="text-align: right;font-size: small;margin-bottom: auto;">Due Date: ' + $('#date').val() + '</p>')
+    msnry.layout();
+    $.ajax({
+        url: _spPageContextInfo.webServerRelativeUrl +
+            "/_api/web/lists/getByTitle('" + taskListName + "')/getItemByStringId('" + noteIdForDatePicker + "')",
+        type: "POST",
+        contentType: "application/json;odata=verbose",
+        data: JSON.stringify(
+        {
+            '__metadata': {
+                'type': 'SP.Data.TasksListItem'
+            },
+            'DateText': $('#date').val(),
+        }),
+        headers: {
+            "accept": "application/json;odata=verbose",
+            "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+            "IF-MATCH": "*",
+            "X-Http-Method": "PATCH"
+        },
+        success: function (data) {
+
+        },
+        error: function (err) {
+            console.log(JSON.stringify(err));
+        }
+    });
+}
+
 function deleteNote(id) {
     $.ajax({
         url: _spPageContextInfo.webServerRelativeUrl +
@@ -416,6 +486,11 @@ function InitializePeoplePickers() {
         SPClientPeoplePicker_InitStandaloneControlWrapper(ppDivActualElement, null, schema);
     }
 }
+
+
+function callbackGetUserInfo() {
+    console.log('callback')
+};
 
 function getUserInfo(method) {
 
@@ -479,10 +554,74 @@ function getUserIds(keys, index) {
         },
         success: function (data) {
             var results = data.d.results;
-            if (results.length != 0) {
-                ppUserIds[index] = results[0].Id;
-            }
             console.log(data)
+            if (results.length != 0) {
+                saveUserToNote(results[0].Id, results[0].Title)
+            }
+            
+        },
+        error: function (err) {
+            console.log(JSON.stringify(err));
+        }
+    });
+}
+
+function saveUserToNote(idUser, titleUser) {
+    $(".assignedTo[data-id='" + noteIdForPeoplePicker + "']").remove();
+    $(".itemTop[data-id='" + noteIdForPeoplePicker + "']").append('<p data-id="' + noteIdForPeoplePicker + '" class="assignedTo" style="text-align: right;font-size: small;white-space: pre;overflow: hidden;display: -webkit-box;margin-bottom: auto;-webkit-line-clamp: 1; -webkit-box-orient: vertical;">Assigned To: ' + titleUser + '</p>')
+    msnry.layout();
+    $.ajax({
+        url: _spPageContextInfo.webServerRelativeUrl +
+            "/_api/web/lists/getByTitle('" + taskListName + "')/getItemByStringId('" + noteIdForPeoplePicker + "')",
+        type: "POST",
+        contentType: "application/json;odata=verbose",
+        data: JSON.stringify(
+        {
+            '__metadata': {
+                'type': 'SP.Data.TasksListItem'
+            },
+            'AssignedToId': {
+                'results': [idUser]
+            },
+        }),
+        headers: {
+            "accept": "application/json;odata=verbose",
+            "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+            "IF-MATCH": "*",
+            "X-Http-Method": "PATCH"
+        },
+        success: function (data) {
+
+        },
+        error: function (err) {
+            console.log(JSON.stringify(err));
+        }
+    });
+}
+
+function removeUserToNote(idNote) {
+    $.ajax({
+        url: _spPageContextInfo.webServerRelativeUrl +
+            "/_api/web/lists/getByTitle('" + taskListName + "')/getItemByStringId('" + idNote + "')",
+        type: "POST",
+        contentType: "application/json;odata=verbose",
+        data: JSON.stringify(
+        {
+            '__metadata': {
+                'type': 'SP.Data.TasksListItem'
+            },
+            'AssignedToId': {
+                'results': []
+            },
+        }),
+        headers: {
+            "accept": "application/json;odata=verbose",
+            "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+            "IF-MATCH": "*",
+            "X-Http-Method": "PATCH"
+        },
+        success: function (data) {
+            
         },
         error: function (err) {
             console.log(JSON.stringify(err));
