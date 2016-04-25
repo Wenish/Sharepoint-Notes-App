@@ -14,5 +14,6 @@
     <ProjectItemFile Source="fonts\thesans-extralightitalic-webfont.woff" Target="Content\fonts\" Type="ElementFile" />
     <ProjectItemFile Source="fonts\thesans-semilight-webfont.woff" Target="Content\fonts\" Type="ElementFile" />
     <ProjectItemFile Source="css\SPCoreStyles.css" Target="Content\css\" Type="ElementFile" />
+    <ProjectItemFile Source="css\jquery-bootstrap-datepicker.css" Target="Content\css\" Type="ElementFile" />
   </Files>
 </ProjectItem>

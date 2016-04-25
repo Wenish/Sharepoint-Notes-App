@@ -88,6 +88,7 @@
     <Content Include="Content\css\bootstrap-responsive.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\image-picker.css" />
+    <Content Include="Content\css\jquery-bootstrap-datepicker.css" />
     <Content Include="Content\css\SPCoreStyles.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -101,6 +102,7 @@
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
     <Content Include="Scripts\fastclick.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\masonry.min.js" />
     <None Include="SharePointProjectItem.spdata">
       <SharePointProjectItemId>{251f890d-aa44-4f14-9e53-123638d660f7}</SharePointProjectItemId>

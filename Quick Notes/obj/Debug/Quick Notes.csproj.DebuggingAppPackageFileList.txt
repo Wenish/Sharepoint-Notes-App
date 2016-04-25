@@ -1,1 +1,1 @@
-E:\GitHub\Sharepoint-Notes-App\Quick Notes\bin\Debug\Quick Notes.debugapp
+C:\Users\Jonas\Documents\GitHub\Sharepoint-Notes-App\Quick Notes\bin\Debug\Quick Notes.debugapp

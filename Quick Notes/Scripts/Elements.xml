@@ -15,5 +15,6 @@
     <File Path="Scripts\masonry.min.js" Url="Scripts/masonry.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\moment-with-locales.min.js" Url="Scripts/moment-with-locales.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\fastclick.js" Url="Scripts/fastclick.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jquery-ui.js" Url="Scripts/jquery-ui.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

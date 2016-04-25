@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="../Images/AppIcon.png">
     <!-- CSS -->
+    <link href="../Content/css/jquery-bootstrap-datepicker.css" rel="stylesheet" />
     <link href="../Content/css/SPCoreStyles.css" rel="stylesheet" />
     <link href="../Content/css/bootstrap.css" rel="stylesheet" />
     <link href="../Content/css/bootstrap-responsive.css" rel="stylesheet" />
@@ -101,6 +102,25 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Date Picker -->
+    <div class="modal fade" id="datePickerNoteModal" tabindex="-1" role="dialog" aria-labelledby="updateNoteModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="datePickerModalLabel">Due Note To</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="DD-MM-YYYY" id="date" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input data-id="" id="btnUpdateDatePickerNote" class="btn btn-primary" type="button" value="Save Changes">
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div id="fixedbutton"><div id="fixedbuttonIcon">+</div></div>
 
@@ -117,6 +137,7 @@
 
     <script type="text/javascript" src="../Scripts/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../Scripts/jquery.mobile.custom.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui.js"></script>
     <script type="text/javascript" src="../Scripts/masonry.min.js"></script>
     <script type="text/javascript" src="../Scripts/app.js"></script>
     <script type="text/javascript" src="../Scripts/bootstrap.js"></script>
