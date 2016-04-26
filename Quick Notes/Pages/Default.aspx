@@ -9,6 +9,7 @@
     <title>Quick Notes</title>
 
     <!-- Meta Tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7;" />
     <meta charset="utf-8">
     <meta name="WebPartPageExpansion" content="full" />
     <meta name=apple-mobile-web-app-capable content=yes />
@@ -22,9 +23,6 @@
     <link href="../Content/css/bootstrap-responsive.css" rel="stylesheet" />
     <link href="../Content/css/style.css" rel="stylesheet" />
     <link href="../Content/css/image-picker.css" rel="stylesheet" />
-
-
-
 </head>
 
 <body>
@@ -33,6 +31,7 @@
         <SharePoint:FormDigest ID="FormDigest1" runat="server"></SharePoint:FormDigest>
     </form>
 
+    <div class="filterNav"><a href="#" class="filterAll">All</a> - <a href="#" class="filterMy">My</a></div>
     <!-- Grid -->
     <div class="grid">
         <div class="grid-sizer"></div>
@@ -124,16 +123,17 @@
     
     <div id="fixedbutton"><div id="fixedbuttonIcon">+</div></div>
 
-        <!-- JavaScript -->
-    <SharePoint:ScriptLink name="clienttemplates.js" runat="server" LoadAfterUI="true" Localizable="false" />
-    <SharePoint:ScriptLink name="clientforms.js" runat="server" LoadAfterUI="true" Localizable="false" />
-    <SharePoint:ScriptLink name="clientpeoplepicker.js" runat="server" LoadAfterUI="true" Localizable="false" />
-    <SharePoint:ScriptLink name="autofill.js" runat="server" LoadAfterUI="true" Localizable="false" />
+    <!-- JavaScript -->
+    <script type="text/javascript" src="/_layouts/15/core.js"></script>
     <script type="text/javascript" src="/_layouts/1033/init.js"></script>
     <script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.core.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.js"></script>
+    <SharePoint:ScriptLink name="clienttemplates.js" runat="server" LoadAfterUI="true" Localizable="false" />
+    <SharePoint:ScriptLink name="clientforms.js" runat="server" LoadAfterUI="true" Localizable="false" />
+    <SharePoint:ScriptLink name="clientpeoplepicker.js" runat="server" LoadAfterUI="true" Localizable="false" />
+    <SharePoint:ScriptLink name="autofill.js" runat="server" LoadAfterUI="true" Localizable="false" />
 
     <script type="text/javascript" src="../Scripts/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../Scripts/jquery.mobile.custom.min.js"></script>

@@ -10,7 +10,7 @@ var loadMethod = false;
 var noteIdForPeoplePicker;
 var noteIdForDatePicker;
 
-$(document).ready(function () {
+$(document).ready(function () { 
     console.log("Document Ready: The magic can start!")
 
     getCurrentUser();
@@ -55,6 +55,16 @@ function clickGeneralButtons() {
         $("#btnUpdateNote").prop("disabled", true);
         var idNoteToHandle = $(this).attr("data-id");
         updateNoteColor(idNoteToHandle);
+    });
+
+    $(".filterAll").unbind("click");
+    $('.filterAll').bind('click', function () {
+        readNotes();
+    });
+
+    $(".filterMy").unbind("click");
+    $('.filterMy').bind('click', function () {
+        readMyNotes();
     });
 }
 
@@ -115,8 +125,13 @@ function clickNoteButtons() {
         updateNoteDate();
         $('#datePickerNoteModal').modal('hide');
     });
-
     
+    $(".actionDeleteAssigneTo").unbind("click");
+    $(".actionDeleteAssigneTo").bind('click', function () {
+        var idNoteToHandle = $(this).attr("data-id");
+        removeUserToNote(idNoteToHandle);
+        $(".assignedTo[data-id='" + idNoteToHandle + "']").remove();
+    });
 
     $(".editNoteSave").unbind("click");
     $(".editNoteSave").bind('click', function () {
@@ -153,7 +168,6 @@ function clickNoteButtons() {
     $(".editNoteQuit").unbind("click");
     $(".editNoteQuit").bind('click', function () {
         closeEditModus()
-        console.log("Quit");
     });
 }
 
@@ -186,7 +200,6 @@ function updateNoteTextStart(id) {
     $("p.noteText[data-id='" + id + "']").html(text);
     closeEditModus();
     updateNoteText(id, textclean);
-    console.log("Save");
 }
 
 function getCurrentUser() {
@@ -229,7 +242,6 @@ function createNote() {
             "X-RequestDigest": $("#__REQUESTDIGEST").val()
         },
         success: function (data) {
-            console.log(data);
 
             appendItem(data.d.Id, data.d.Body, data.d.NoteBackgroundColor, data.d.Modified, currentUserName , null, null);
 
@@ -256,7 +268,6 @@ function readNotes() {
         success: function (data) {
             var results = data.d.results;
             $(".item").remove();
-            console.log(data)
 
             for (var i = 0; i < results.length; i++) {
                 var AssignedToUser = null
@@ -280,6 +291,43 @@ function readNotes() {
         }
     });
 }
+
+function readMyNotes() {
+    $.ajax({
+        url: _spPageContextInfo.webServerRelativeUrl +
+             "/_api/web/lists/getbytitle('" + taskListName + "')/items?$select=Id,Body,NoteBackgroundColor,Modified,DateText,Author/Name,Author/Title,AssignedTo/Title,AssignedTo/Id&$filter=(Archiviert eq 0) and (AssignedTo/Id eq " + _spPageContextInfo.userId + ") &$orderby=Created asc&$expand=Author/Id,AssignedTo/Id&$top=5000",
+        type: "GET",
+        headers: {
+            "accept": "application/json;odata=verbose",
+        },
+
+        success: function (data) {
+            var results = data.d.results;
+            $(".item").remove();
+
+            for (var i = 0; i < results.length; i++) {
+                var AssignedToUser = null
+                if (results[i].AssignedTo.results != undefined) {
+                    AssignedToUser = results[i].AssignedTo.results[0].Title;
+                }
+                var DateText = null
+                if (results[i].DateText != '') {
+                    DateText = results[i].DateText
+                }
+
+                appendItem(results[i].Id, results[i].Body, results[i].NoteBackgroundColor, results[i].Modified, results[i].Author.Title, AssignedToUser, DateText);
+            }
+            msnry.reloadItems();
+            msnry.layout();
+            autosize($('textarea'));
+            clickNoteButtons();
+        },
+        error: function (err) {
+            console.log(JSON.stringify(err));
+        }
+    });
+}
+
 function appendItem(boxeId, boxeText, boxeNoteBackgroundColor, boxeModified, boxeAuthorTitle, assignedToUser, dueDateTime) {
     var y = new Date(boxeModified);
     var modified_year = y.getFullYear();
@@ -303,15 +351,15 @@ function appendItem(boxeId, boxeText, boxeNoteBackgroundColor, boxeModified, box
 
     var assignedTo = ''
     if (assignedToUser != null) {
-        assignedTo = '<p data-id="' + boxeId + '" class="assignedTo" style="text-align: right;font-size: small;white-space: pre;overflow: hidden;display: -webkit-box;margin-bottom: auto;-webkit-line-clamp: 1; -webkit-box-orient: vertical;">Assigned To: ' + assignedToUser + '</p>'
+        assignedTo = '<p data-id="' + boxeId + '" class="assignedTo">Assigned To: ' + assignedToUser + ' - <a href="#" class="actionDeleteAssigneTo" data-id="' + boxeId + '">x</a></p>'
     }
     var dueDate = ''
     if (dueDateTime != null) {
-        dueDate = '<p data-id="' + boxeId + '" class="dateText" style="text-align: right;font-size: small;margin-bottom: auto;">Due Date: ' + dueDateTime + '</p>'
+        dueDate = '<p data-id="' + boxeId + '" class="dateText">Due Date: ' + dueDateTime + '</p>'
     }
 
-    var createdByLine = '<p style="text-align: right;font-size: small;white-space: pre;overflow: hidden;display: -webkit-box;margin-bottom: auto;-webkit-line-clamp: 1; -webkit-box-orient: vertical;">Created by: ' + boxeAuthorTitle + '</p>';
-    var lastModifiedLine = "<p style='text-align: right;font-size: small;margin-bottom: auto;'>Modified: " + modified_date + "</p>";
+    var createdByLine = '<p class="itemCreatedBy">Created by: ' + boxeAuthorTitle + '</p>';
+    var lastModifiedLine = "<p class='itemModified'>Modified: " + modified_date + "</p>";
     var noteTextArea = '<div data-id="' + boxeId + '" class="editItem"><textarea data-id="' + boxeId + '" class="form-control" rows="1">' + boxeText + '</textarea></div>'
     var itemButtons = '<div data-id="' + boxeId + '" class="itemBot boxeToolbar"><div data-id="' + boxeId + '" class="itemBotButton actionPeoplePicker"><span class="icon-note glyphicon glyphicon-user" style="font-size: xx-large;"></span></div><div  data-id="' + boxeId + '" class="itemBotButton actionDatePicker"><span class="icon-note glyphicon glyphicon-calendar" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionColor"><span class="icon-note glyphicon glyphicon-tint" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton actionRemove"><span class="icon-note glyphicon glyphicon-remove" style="font-size: xx-large;"></span></div></div>'
     var editButtonBar = '<div data-id="' + boxeId + '" class="itemBot editItem"><div data-id="' + boxeId + '" class="itemBotButton editNoteSave"><span class="icon-note glyphicon glyphicon-ok" style="font-size: xx-large;"></span></div><div data-id="' + boxeId + '" class="itemBotButton editNoteQuit"><span class="icon-note glyphicon glyphicon-remove" style="font-size: xx-large;"></span></div></div>'
@@ -372,7 +420,6 @@ function updateNoteText(id, text) {
             "X-Http-Method": "PATCH"
         },
         success: function (data) {
-            console.log("updateNoteText DONE")
         },
         error: function (err) {
             console.log(JSON.stringify(err));
@@ -412,7 +459,7 @@ function updateNoteColor(id) {
 
 function updateNoteDate() {
     $(".dateText[data-id='" + noteIdForDatePicker + "']").remove();
-    $(".itemTop[data-id='" + noteIdForDatePicker + "']").append('<p data-id="' + noteIdForDatePicker + '" class="dateText" style="text-align: right;font-size: small;margin-bottom: auto;">Due Date: ' + $('#date').val() + '</p>')
+    $(".itemTop[data-id='" + noteIdForDatePicker + "']").append('<p data-id="' + noteIdForDatePicker + '" class="dateText">Due Date: ' + $('#date').val() + '</p>')
     msnry.layout();
     $.ajax({
         url: _spPageContextInfo.webServerRelativeUrl +
@@ -489,7 +536,6 @@ function InitializePeoplePickers() {
 
 
 function callbackGetUserInfo() {
-    console.log('callback')
 };
 
 function getUserInfo(method) {
@@ -554,7 +600,6 @@ function getUserIds(keys, index) {
         },
         success: function (data) {
             var results = data.d.results;
-            console.log(data)
             if (results.length != 0) {
                 saveUserToNote(results[0].Id, results[0].Title)
             }
@@ -568,7 +613,8 @@ function getUserIds(keys, index) {
 
 function saveUserToNote(idUser, titleUser) {
     $(".assignedTo[data-id='" + noteIdForPeoplePicker + "']").remove();
-    $(".itemTop[data-id='" + noteIdForPeoplePicker + "']").append('<p data-id="' + noteIdForPeoplePicker + '" class="assignedTo" style="text-align: right;font-size: small;white-space: pre;overflow: hidden;display: -webkit-box;margin-bottom: auto;-webkit-line-clamp: 1; -webkit-box-orient: vertical;">Assigned To: ' + titleUser + '</p>')
+    $(".itemTop[data-id='" + noteIdForPeoplePicker + "']").append('<p data-id="' + noteIdForPeoplePicker + '" class="assignedTo">Assigned To: ' + titleUser + ' - <a href="#" class="actionDeleteAssigneTo" data-id="' + noteIdForPeoplePicker + '">x</a></p>')
+    clickNoteButtons();
     msnry.layout();
     $.ajax({
         url: _spPageContextInfo.webServerRelativeUrl +

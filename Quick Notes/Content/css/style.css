@@ -3,6 +3,13 @@ body {
     font-family: TheSaB3,'Trebuchet MS',Arial,Helvetica,sans-serif;
 }
 
+.filterNav{
+    font-size: xx-large;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
 .item {
     background: #bebebe;
     color: #bebebe;
@@ -38,6 +45,38 @@ body {
 
 .itemBotButton.editNoteSave, .itemBotButton.editNoteQuit {
     width: 50%
+}
+
+.itemCreatedBy {
+    text-align: right;
+    font-size: small;
+    overflow: hidden;
+    display: -webkit-box;
+    margin-bottom: auto;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.itemModified {
+    text-align: right;
+    font-size: small;
+    margin-bottom: auto;
+}
+
+.dateText{
+    text-align: right;
+    font-size: small;
+    margin-bottom: auto;
+}
+
+.assignedTo{
+    text-align: right;
+    font-size: small;
+    overflow: hidden;
+    display: -webkit-box;
+    margin-bottom: auto;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .form-control {
