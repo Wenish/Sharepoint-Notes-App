@@ -34,7 +34,9 @@ $(document).ready(function () {
 
     InitializePeoplePickers();
 
-    $('#date').datepicker({});
+    $('#date').datepicker({
+        dateFormat: "mm/dd/yy"
+    });
 });
 
 function startColorpickers() {
@@ -235,7 +237,6 @@ function createNote() {
                 },
                 'Body': "new note :)",
                 'NoteBackgroundColor': "#FFE228",
-                'Archiviert': f,
             }),
         headers: {
             "accept": "application/json;odata=verbose",
@@ -259,7 +260,7 @@ function createNote() {
 function readNotes() {
     $.ajax({
         url: _spPageContextInfo.webServerRelativeUrl +
-             "/_api/web/lists/getbytitle('" + taskListName + "')/items?$select=Id,Body,NoteBackgroundColor,Modified,DateText,Author/Name,Author/Title,AssignedTo/Title&$filter=Archiviert eq 0 &$orderby=Created asc&$expand=Author/Id,AssignedTo/Id&$top=5000",
+             "/_api/web/lists/getbytitle('" + taskListName + "')/items?$select=Id,PercentComplete,Body,NoteBackgroundColor,Modified,DueDate,Author/Name,Author/Title,AssignedTo/Title&$filter=PercentComplete ne 100 &$orderby=Created asc&$expand=Author/Id,AssignedTo/Id&$top=5000",
         type: "GET",
         headers: {
             "accept": "application/json;odata=verbose",
@@ -275,8 +276,8 @@ function readNotes() {
                     AssignedToUser = results[i].AssignedTo.results[0].Title;
                 }
                 var DateText = null
-                if (results[i].DateText != '') {
-                    DateText = results[i].DateText
+                if (results[i].DueDate != '') {
+                    DateText = results[i].DueDate
                 }
 
                 appendItem(results[i].Id, results[i].Body, results[i].NoteBackgroundColor, results[i].Modified, results[i].Author.Title, AssignedToUser, DateText);
@@ -295,7 +296,7 @@ function readNotes() {
 function readMyNotes() {
     $.ajax({
         url: _spPageContextInfo.webServerRelativeUrl +
-             "/_api/web/lists/getbytitle('" + taskListName + "')/items?$select=Id,Body,NoteBackgroundColor,Modified,DateText,Author/Name,Author/Title,AssignedTo/Title,AssignedTo/Id&$filter=(Archiviert eq 0) and (AssignedTo/Id eq " + _spPageContextInfo.userId + ") &$orderby=Created asc&$expand=Author/Id,AssignedTo/Id&$top=5000",
+             "/_api/web/lists/getbytitle('" + taskListName + "')/items?$select=Id,PercentComplete,Body,NoteBackgroundColor,Modified,DueDate,Author/Name,Author/Title,AssignedTo/Title,AssignedTo/Id&$filter=(PercentComplete ne 100) and (AssignedTo/Id eq " + _spPageContextInfo.userId + ") &$orderby=Created asc&$expand=Author/Id,AssignedTo/Id&$top=5000",
         type: "GET",
         headers: {
             "accept": "application/json;odata=verbose",
@@ -311,8 +312,8 @@ function readMyNotes() {
                     AssignedToUser = results[i].AssignedTo.results[0].Title;
                 }
                 var DateText = null
-                if (results[i].DateText != '') {
-                    DateText = results[i].DateText
+                if (results[i].DueDate != '') {
+                    DateText = results[i].DueDate
                 }
 
                 appendItem(results[i].Id, results[i].Body, results[i].NoteBackgroundColor, results[i].Modified, results[i].Author.Title, AssignedToUser, DateText);
@@ -355,7 +356,13 @@ function appendItem(boxeId, boxeText, boxeNoteBackgroundColor, boxeModified, box
     }
     var dueDate = ''
     if (dueDateTime != null) {
-        dueDate = '<p data-id="' + boxeId + '" class="dateText">Due Date: ' + dueDateTime + '</p>'
+        var dateValue = new Date(dueDateTime);
+        var dateValue_year = dateValue.getFullYear();
+        var dateValue_month = ("0" + (dateValue.getMonth() + 1)).slice(-2);
+        var dateValue_day = ("0" + dateValue.getDate()).slice(-2);
+        var dateDisplayValue = dateValue_day + "." + dateValue_month + "." + dateValue_year;
+
+        dueDate = '<p data-id="' + boxeId + '" class="dateText">Due Date: ' + dateDisplayValue + '</p>'
     }
 
     var createdByLine = '<p class="itemCreatedBy">Created by: ' + boxeAuthorTitle + '</p>';
@@ -458,34 +465,70 @@ function updateNoteColor(id) {
 }
 
 function updateNoteDate() {
-    $(".dateText[data-id='" + noteIdForDatePicker + "']").remove();
-    $(".itemTop[data-id='" + noteIdForDatePicker + "']").append('<p data-id="' + noteIdForDatePicker + '" class="dateText">Due Date: ' + $('#date').val() + '</p>')
-    msnry.layout();
-    $.ajax({
-        url: _spPageContextInfo.webServerRelativeUrl +
-            "/_api/web/lists/getByTitle('" + taskListName + "')/getItemByStringId('" + noteIdForDatePicker + "')",
-        type: "POST",
-        contentType: "application/json;odata=verbose",
-        data: JSON.stringify(
-        {
-            '__metadata': {
-                'type': 'SP.Data.TasksListItem'
+    if ($('#date').val() == '') {
+        $(".dateText[data-id='" + noteIdForDatePicker + "']").remove();
+        $.ajax({
+            url: _spPageContextInfo.webServerRelativeUrl +
+                "/_api/web/lists/getByTitle('" + taskListName + "')/getItemByStringId('" + noteIdForDatePicker + "')",
+            type: "POST",
+            contentType: "application/json;odata=verbose",
+            data: JSON.stringify(
+            {
+                '__metadata': {
+                    'type': 'SP.Data.TasksListItem'
+                },
+                'DueDate': null,
+            }),
+            headers: {
+                "accept": "application/json;odata=verbose",
+                "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+                "IF-MATCH": "*",
+                "X-Http-Method": "PATCH"
             },
-            'DateText': $('#date').val(),
-        }),
-        headers: {
-            "accept": "application/json;odata=verbose",
-            "X-RequestDigest": $("#__REQUESTDIGEST").val(),
-            "IF-MATCH": "*",
-            "X-Http-Method": "PATCH"
-        },
-        success: function (data) {
+            success: function (data) {
 
-        },
-        error: function (err) {
-            console.log(JSON.stringify(err));
-        }
-    });
+            },
+            error: function (err) {
+                console.log(JSON.stringify(err));
+            }
+        });
+    } else {
+        var dateValue = new Date($('#date').val());
+        $(".dateText[data-id='" + noteIdForDatePicker + "']").remove();
+        var dateValue_year = dateValue.getFullYear();
+        var dateValue_month = ("0" + (dateValue.getMonth() + 1)).slice(-2);
+        var dateValue_day = ("0" + dateValue.getDate()).slice(-2);
+        var dateDisplayValue = dateValue_day + "." + dateValue_month + "." + dateValue_year;
+
+        $(".itemTop[data-id='" + noteIdForDatePicker + "']").append('<p data-id="' + noteIdForDatePicker + '" class="dateText">Due Date: ' + dateDisplayValue + '</p>')
+        msnry.layout();
+        $.ajax({
+            url: _spPageContextInfo.webServerRelativeUrl +
+                "/_api/web/lists/getByTitle('" + taskListName + "')/getItemByStringId('" + noteIdForDatePicker + "')",
+            type: "POST",
+            contentType: "application/json;odata=verbose",
+            data: JSON.stringify(
+            {
+                '__metadata': {
+                    'type': 'SP.Data.TasksListItem'
+                },
+                'DueDate': new Date(dateValue.getFullYear(), dateValue.getMonth(), dateValue.getDate()),
+            }),
+            headers: {
+                "accept": "application/json;odata=verbose",
+                "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+                "IF-MATCH": "*",
+                "X-Http-Method": "PATCH"
+            },
+            success: function (data) {
+
+            },
+            error: function (err) {
+                console.log(JSON.stringify(err));
+            }
+        });
+    }
+
 }
 
 function deleteNote(id) {
@@ -499,7 +542,7 @@ function deleteNote(id) {
             '__metadata': {
                 'type': 'SP.Data.TasksListItem'
             },
-            'Archiviert': t,
+            'PercentComplete': 100
         }),
         headers: {
             "accept": "application/json;odata=verbose",

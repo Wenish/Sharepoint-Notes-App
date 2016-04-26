@@ -5,5 +5,30 @@
     <File Path="Images\transparent-background.png" Url="Images/transparent-background.png" ReplaceContent="TRUE" />
     <File Path="Images\addNoteIcon.png" Url="Images/addNoteIcon.png" ReplaceContent="TRUE" />
     <File Path="Images\AppIcon500px.png" Url="Images/AppIcon500px.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\android-icon-36x36.png" Url="Images/appIcons/android-icon-36x36.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\android-icon-48x48.png" Url="Images/appIcons/android-icon-48x48.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\android-icon-72x72.png" Url="Images/appIcons/android-icon-72x72.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\android-icon-96x96.png" Url="Images/appIcons/android-icon-96x96.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\android-icon-144x144.png" Url="Images/appIcons/android-icon-144x144.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\android-icon-192x192.png" Url="Images/appIcons/android-icon-192x192.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\apple-icon.png" Url="Images/appIcons/apple-icon.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\apple-icon-57x57.png" Url="Images/appIcons/apple-icon-57x57.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\apple-icon-60x60.png" Url="Images/appIcons/apple-icon-60x60.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\apple-icon-72x72.png" Url="Images/appIcons/apple-icon-72x72.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\apple-icon-76x76.png" Url="Images/appIcons/apple-icon-76x76.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\apple-icon-114x114.png" Url="Images/appIcons/apple-icon-114x114.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\apple-icon-120x120.png" Url="Images/appIcons/apple-icon-120x120.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\apple-icon-144x144.png" Url="Images/appIcons/apple-icon-144x144.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\apple-icon-152x152.png" Url="Images/appIcons/apple-icon-152x152.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\apple-icon-180x180.png" Url="Images/appIcons/apple-icon-180x180.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\apple-icon-precomposed.png" Url="Images/appIcons/apple-icon-precomposed.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\favicon.ico" Url="Images/appIcons/favicon.ico" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\favicon-16x16.png" Url="Images/appIcons/favicon-16x16.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\favicon-32x32.png" Url="Images/appIcons/favicon-32x32.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\favicon-96x96.png" Url="Images/appIcons/favicon-96x96.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\ms-icon-70x70.png" Url="Images/appIcons/ms-icon-70x70.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\ms-icon-144x144.png" Url="Images/appIcons/ms-icon-144x144.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\ms-icon-150x150.png" Url="Images/appIcons/ms-icon-150x150.png" ReplaceContent="TRUE" />
+    <File Path="Images\appIcons\ms-icon-310x310.png" Url="Images/appIcons/ms-icon-310x310.png" ReplaceContent="TRUE" />
   </Module>
 </Elements>

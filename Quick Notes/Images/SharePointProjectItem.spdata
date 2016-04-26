@@ -6,5 +6,30 @@
     <ProjectItemFile Source="transparent-background.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="addNoteIcon.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="AppIcon500px.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\android-icon-36x36.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\android-icon-48x48.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\android-icon-72x72.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\android-icon-96x96.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\android-icon-144x144.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\android-icon-192x192.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\apple-icon.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\apple-icon-57x57.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\apple-icon-60x60.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\apple-icon-72x72.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\apple-icon-76x76.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\apple-icon-114x114.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\apple-icon-120x120.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\apple-icon-144x144.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\apple-icon-152x152.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\apple-icon-180x180.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\apple-icon-precomposed.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\favicon.ico" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\favicon-16x16.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\favicon-32x32.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\favicon-96x96.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\ms-icon-70x70.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\ms-icon-144x144.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\ms-icon-150x150.png" Target="Images\appIcons\" Type="ElementFile" />
+    <ProjectItemFile Source="appIcons\ms-icon-310x310.png" Target="Images\appIcons\" Type="ElementFile" />
   </Files>
 </ProjectItem>
