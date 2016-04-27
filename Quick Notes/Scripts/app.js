@@ -260,7 +260,7 @@ function createNote() {
 function readNotes() {
     $.ajax({
         url: _spPageContextInfo.webServerRelativeUrl +
-             "/_api/web/lists/getbytitle('" + taskListName + "')/items?$select=Id,PercentComplete,Body,NoteBackgroundColor,Modified,DueDate,Author/Name,Author/Title,AssignedTo/Title&$filter=PercentComplete ne 100 &$orderby=Created asc&$expand=Author/Id,AssignedTo/Id&$top=5000",
+             "/_api/web/lists/getbytitle('" + taskListName + "')/items?$select=Id,PercentComplete,Body,NoteBackgroundColor,Modified,DueDate,Author/Name,Author/Title,AssignedTo/Title&$filter=PercentComplete ne 1 &$orderby=Created asc&$expand=Author/Id,AssignedTo/Id&$top=5000",
         type: "GET",
         headers: {
             "accept": "application/json;odata=verbose",
@@ -296,7 +296,7 @@ function readNotes() {
 function readMyNotes() {
     $.ajax({
         url: _spPageContextInfo.webServerRelativeUrl +
-             "/_api/web/lists/getbytitle('" + taskListName + "')/items?$select=Id,PercentComplete,Body,NoteBackgroundColor,Modified,DueDate,Author/Name,Author/Title,AssignedTo/Title,AssignedTo/Id&$filter=(PercentComplete ne 100) and (AssignedTo/Id eq " + _spPageContextInfo.userId + ") &$orderby=Created asc&$expand=Author/Id,AssignedTo/Id&$top=5000",
+             "/_api/web/lists/getbytitle('" + taskListName + "')/items?$select=Id,PercentComplete,Body,NoteBackgroundColor,Modified,DueDate,Author/Name,Author/Title,AssignedTo/Title,AssignedTo/Id&$filter=(PercentComplete ne 1) and (AssignedTo/Id eq " + _spPageContextInfo.userId + ") &$orderby=Created asc&$expand=Author/Id,AssignedTo/Id&$top=5000",
         type: "GET",
         headers: {
             "accept": "application/json;odata=verbose",
@@ -542,7 +542,7 @@ function deleteNote(id) {
             '__metadata': {
                 'type': 'SP.Data.TasksListItem'
             },
-            'PercentComplete': 100
+            'PercentComplete': 1
         }),
         headers: {
             "accept": "application/json;odata=verbose",
