@@ -15,21 +15,21 @@
     <meta name=apple-mobile-web-app-capable content=yes />
     <meta name=apple-mobile-web-app-status-bar-style content=black />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="apple-touch-icon" sizes="57x57" href="../Images/appIcons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="../Images/appIcons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../Images/appIcons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="../Images/appIcons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../Images/appIcons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="../Images/appIcons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="../Images/appIcons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="../Images/appIcons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../Images/appIcons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="../Images/appIcons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../Images/appIcons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="../Images/appIcons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../Images/appIcons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="../Images/appIcons/apple-icon-57x57.png?v=01">
+    <link rel="apple-touch-icon" sizes="60x60" href="../Images/appIcons/apple-icon-60x60.png?v=01">
+    <link rel="apple-touch-icon" sizes="72x72" href="../Images/appIcons/apple-icon-72x72.png?v=01">
+    <link rel="apple-touch-icon" sizes="76x76" href="../Images/appIcons/apple-icon-76x76.png?v=01">
+    <link rel="apple-touch-icon" sizes="114x114" href="../Images/appIcons/apple-icon-114x114.png?v=01">
+    <link rel="apple-touch-icon" sizes="120x120" href="../Images/appIcons/apple-icon-120x120.png?v=01">
+    <link rel="apple-touch-icon" sizes="144x144" href="../Images/appIcons/apple-icon-144x144.png?v=01">
+    <link rel="apple-touch-icon" sizes="152x152" href="../Images/appIcons/apple-icon-152x152.png?v=01">
+    <link rel="apple-touch-icon" sizes="180x180" href="../Images/appIcons/apple-icon-180x180.png?v=01">
+    <link rel="icon" type="image/png" sizes="192x192"  href="../Images/appIcons/android-icon-192x192.png?v=01">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Images/appIcons/favicon-32x32.png?v=01">
+    <link rel="icon" type="image/png" sizes="96x96" href="../Images/appIcons/favicon-96x96.png?v=01">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Images/appIcons/favicon-16x16.png?v=01">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png?v=01">
     <meta name="theme-color" content="#ffffff">
 
     <!-- CSS -->
@@ -37,7 +37,7 @@
     <link href="../Content/css/SPCoreStyles.css" rel="stylesheet" />
     <link href="../Content/css/bootstrap.css" rel="stylesheet" />
     <link href="../Content/css/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="../Content/css/style.css" rel="stylesheet" />
+    <link href="../Content/css/style.css?v=01" rel="stylesheet" />
     <link href="../Content/css/image-picker.css" rel="stylesheet" />
 </head>
 
@@ -155,7 +155,7 @@
     <script type="text/javascript" src="../Scripts/jquery.mobile.custom.min.js"></script>
     <script type="text/javascript" src="../Scripts/jquery-ui.js"></script>
     <script type="text/javascript" src="../Scripts/masonry.min.js"></script>
-    <script type="text/javascript" src="../Scripts/app.js"></script>
+    <script type="text/javascript" src="../Scripts/app.js?v=01"></script>
     <script type="text/javascript" src="../Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="../Scripts/autosize.min.js"></script>
     <script type="text/javascript" src="../Scripts/image-picker.js"></script>
