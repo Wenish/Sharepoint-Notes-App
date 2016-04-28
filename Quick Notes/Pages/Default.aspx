@@ -34,7 +34,7 @@
 
     <!-- CSS -->
     <link href="../Content/css/jquery-bootstrap-datepicker.css" rel="stylesheet" />
-   <!-- <link href="../Content/css/SPCoreStyles.css" rel="stylesheet" />-->
+    <link href="../Content/css/SPCoreStyles.css" rel="stylesheet" />
     <link href="../Content/css/bootstrap.css" rel="stylesheet" />
     <link href="../Content/css/bootstrap-responsive.css" rel="stylesheet" />
     <link href="../Content/css/style.css" rel="stylesheet" />
